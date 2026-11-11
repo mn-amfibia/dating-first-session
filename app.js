@@ -93,6 +93,5 @@ document.addEventListener('click',event=>{
 });
 $('#start').addEventListener('click',()=>{$('#welcome').hidden=true;$('#workspace').hidden=false;render();});
 $('#reset').addEventListener('click',()=>{data=freshData();selectScreen(0);tab='life';render();showToast('Ответы сброшены');});
-$('#mode').addEventListener('click',()=>{const on=document.body.classList.toggle('phone-only');$('#mode').textContent=on?'С пояснениями ↙':'Только телефон ↗';});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&step===4&&!$('#workspace').hidden){data.answer='';selectScreen(5);}});
 render();
