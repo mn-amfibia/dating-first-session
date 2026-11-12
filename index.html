@@ -502,6 +502,23 @@
   box-shadow: none;
 }
 
+/* Quiet monochrome icons on the Premium photo. */
+.premium-features .feature-icon {
+  color: #fff;
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+.notes .value-principle {
+  padding: 14px 16px;
+  border-left: 3px solid #965eeb;
+  border-radius: 0 10px 10px 0;
+  background: #f5efff;
+  color: #342346;
+  line-height: 1.65;
+}
+.value-principle strong { font-weight: 700; }
+
 </style>
   
 </head>
@@ -712,7 +729,7 @@ function render(){
   const currentScroll=$('#phone-content .screen-scroll');if(currentScroll)currentScroll.scrollTop=scrollTop;
   lastRenderedStep=step;lastRenderedTab=tab;
   const hypotheses=step===0?`<h4>Интересы</h4><p>${s.why}</p><h4>Уведомление</h4><p>${s.noticeWhy}</p>`:`<p>${s.why}</p>`;
-  $('#notes').innerHTML=formatNotesMarkup(`<section class="note-card"><h2>${s.title}</h2><div class="specs"><span class="${s.required?'step-required':'step-optional'}">${step===4?'Без заполнения':step===5?'Можно отказаться':s.required?'Обязательный шаг':'Можно пропустить'}</span></div><p>${s.desc}</p>${step===1?`<h3>Разделы экрана</h3><div class="review-tabs" role="group" aria-label="Разделы экрана для просмотра"><button class="review-tab ${tab==='life'?'active':''}" aria-pressed="${tab==='life'}" data-action="tab-life">Образ жизни</button><button class="review-tab ${tab==='habits'?'active':''}" aria-pressed="${tab==='habits'}" data-action="tab-habits">Привычки</button></div>`:''}<h3>Состояния для просмотра</h3><div class="state-list">${s.states.filter(x=>x!=='Скрыто').map(x=>`<button class="state-button ${x===stateName?'active':''}" data-state="${x}">${x}</button>`).join('')}</div></section>${crMarkup(step)}<section class="note-card"><h3>Гипотезы</h3>${hypotheses}</section>`);
+  $('#notes').innerHTML=formatNotesMarkup(`<section class="note-card"><h2>${s.title}</h2><div class="specs"><span class="${s.required?'step-required':'step-optional'}">${step===4?'Без заполнения':step===5?'Можно отказаться':s.required?'Обязательный шаг':'Можно пропустить'}</span></div><p>${s.desc}</p>${step===4?'<p class="value-principle"><strong>Онбординг, заточенный под демонстрацию ценности в рамках самой распространенной JTBD</strong></p>':''}${step===1?`<h3>Разделы экрана</h3><div class="review-tabs" role="group" aria-label="Разделы экрана для просмотра"><button class="review-tab ${tab==='life'?'active':''}" aria-pressed="${tab==='life'}" data-action="tab-life">Образ жизни</button><button class="review-tab ${tab==='habits'?'active':''}" aria-pressed="${tab==='habits'}" data-action="tab-habits">Привычки</button></div>`:''}<h3>Состояния для просмотра</h3><div class="state-list">${s.states.filter(x=>x!=='Скрыто').map(x=>`<button class="state-button ${x===stateName?'active':''}" data-state="${x}">${x}</button>`).join('')}</div></section>${crMarkup(step)}<section class="note-card"><h3>Гипотезы</h3>${hypotheses}</section>`);
 }
 function toggleList(list,value,max=Infinity){const index=list.indexOf(value);if(index>=0)list.splice(index,1);else if(list.length<max)list.push(value);else showToast(`Можно выбрать не больше ${max}`);}
 function sampleState(name){
