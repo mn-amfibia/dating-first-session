@@ -452,6 +452,21 @@
 .specs .step-required { background: #eee4ff; color: #8042c5; }
 .specs .step-optional { background: #e3f4ff; color: #227ba6; }
 
+/* A single-row map header and consistent vertical spacing. */
+.map .panel-title { flex-wrap: nowrap; gap: 12px; }
+.map .panel-title h2 { margin: 0; white-space: nowrap; }
+.map .panel-title .text-button { margin-left: auto; flex-shrink: 0; }
+.map > .muted { margin: 20px 0 0; }
+.map .privacy-legend { margin: 24px 0 0; }
+.map nav { margin-top: 24px; gap: 8px; }
+.map .nav-button { min-height: 48px; padding-top: 12px; padding-bottom: 12px; }
+@media (min-width: 1200px) {
+  main { grid-template-columns: 310px minmax(354px, 1fr) minmax(380px, 440px); }
+}
+@media (min-width: 800px) and (max-width: 1199px) {
+  main { grid-template-columns: 310px 354px; }
+}
+
 </style>
   
 </head>
